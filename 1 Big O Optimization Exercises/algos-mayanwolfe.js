@@ -125,6 +125,106 @@ Fetching from cache: 10
 */
 
 console.log("~~~~~~~~~~~~TASK 4 ~~~~~~~~~~~~");
+// Task 4
 // recursion is you don't know how deep you need to go - just call the function
 // repeatedly until the condition is met
-//
+// this function below will intersperse a string with e
+
+function joinElements(array, joinString) {
+  function recurse(index, resultSoFar) {
+    resultSoFar += array[index];
+    console.log(resultSoFar, index);
+
+    if (index === array.length - 1) {
+      // base case
+      return resultSoFar;
+    } else {
+      return recurse(index + 1, resultSoFar + joinString); // 'se' after first pass
+    }
+  }
+  // so far you have just defined the function
+  // next you have to call it
+
+  return recurse(0, ""); // <- Don't forget why this line is here!
+}
+
+joinElements(["s", "cr", "t cod", " :) :)"], "e");
+/*
+s 0
+secr 1
+secret code 2
+secret code :) :) 3
+*/
+console.log("~~~~~~~~~~~~TASK 5 ~~~~~~~~~~~~");
+//Task 5: Implement linear search.
+
+function linearSearch(arr, item) {
+  let index = -1;
+  arr.forEach((e, i) => {
+    if (e == item) {
+      index = i;
+    }
+  });
+  return index;
+}
+
+console.log(linearSearch([2, 6, 7, 90, 103], 90));
+// returns 3
+// runs but not best choice at large scale
+console.log("~~~~~~~~~~~~TASK 6 ~~~~~~~~~~~~");
+// must be SORTED FIRST
+function binarySearch(list, item) {
+  let min = 0;
+  let max = list.length - 1;
+  let guess;
+
+  while (min <= max) {
+    guess = Math.floor((min + max) / 2); // index 2 to begin
+
+    if (list[guess] === item) {
+      // list[2] = 7
+      return guess;
+    } else {
+      if (list[guess] < item) {
+        min = guess + 1; // resets to index 3 for first round - represents upper half
+      } else {
+        max = guess - 1;
+      }
+    }
+  }
+  return -1;
+}
+// returns 3
+console.log(binarySearch([2, 6, 7, 90, 103], 90));
+console.log("~~~~~~~~~~~~TASK 7 ~~~~~~~~~~~~");
+
+//BUBBLESORT
+
+function swap(array, i, j) {
+  let temp = array[i];
+  array[i] = array[j];
+  array[j] = temp;
+}
+
+//basic implementation
+function bubbleSortBasic(array) {
+  var countOuter = 0;
+  let countInner = 0;
+  let countSwap = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    countOuter++;
+    for (let j = 1; j < array.length; j++) {
+      countInner++;
+      if (array[j - 1] > array[j]) {
+        countSwap++;
+        swap(array, j - 1, j);
+      }
+    }
+  }
+
+  console.log("outer:", countOuter, "inner:", countInner, "swap:", countSwap);
+  return array;
+}
+
+console.log(bubbleSortBasic([103, 90, 7, 6, 2]));
