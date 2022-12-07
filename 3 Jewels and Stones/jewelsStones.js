@@ -34,11 +34,11 @@ const numJewelsInStones1 = (jewels, stones) => {
 };
 
 const numJewelsInStones2 = (jewels, stones) => {
-    const charMap = {};
-    let count = 0;
-    jewels.map(e => charMap(e) = true);
-    stones.map(e => charMap(e) ? count++ : null)
-    return count;
-}
-console.log(numJewelsInStones("aA", "aAAbbbb")); // expected 3
-console.log(numJewelsInStones("z", "ZZ")); // expected 0
+  const charMap = {};
+  let count = 0;
+  jewels.split("").map((e) => (charMap[e] = true));
+  stones.split("").map((e) => (charMap[e] ? count++ : null));
+  return count;
+};
+console.log(numJewelsInStones2("aA", "aAAbbbb")); // expected 3
+console.log(numJewelsInStones2("z", "ZZ")); // expected 0
