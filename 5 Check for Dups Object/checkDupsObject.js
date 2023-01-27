@@ -15,14 +15,10 @@ Example 3:
 Input: nums = [1,1,1,3,3,4,3,2,4,2]
 Output: true
 */
-const checkDupsObject = (arr) => {
-  const numsMap = {};
-  for (let i = 0; i < arr.length; i++) {
-    let num = arr[i];
-    return (numsMap[num]) ? true : numsMap[num] = true; 
-  }
-
-  return false;
+const nums = [1, 2, 2, 4];
+const checkDupsObject = (nums) => {
+  let set = new Set(nums);
+  return set.size < nums.length;
 };
 
-console.log(checkDupsObject([1, 2, 3, 1]));
+console.log(checkDupsObject(nums));
