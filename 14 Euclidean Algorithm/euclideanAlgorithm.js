@@ -31,6 +31,9 @@ function recursiveEuclidean(a, b) {
   if (b === 0) return a;
   return recursiveEuclidean(b, a % b);
 }
+
+
+
 console.log(mygcd(30, 12)); // expects 6
 console.log(mygcd(8, 9)); // expects 1
 console.log(mygcd(1, 1)); // expects 1
